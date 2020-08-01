@@ -2263,6 +2263,7 @@ static int nvmf_rdma_destroy(struct spdk_nvmf_transport *transport);
 static struct spdk_nvmf_transport *
 nvmf_rdma_create(struct spdk_nvmf_transport_opts *opts)
 {
+	printf("nvmf_rdma_create\n");
 	int rc;
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_device	*device, *tmp;
@@ -2515,6 +2516,7 @@ nvmf_rdma_create(struct spdk_nvmf_transport_opts *opts)
 static int
 nvmf_rdma_destroy(struct spdk_nvmf_transport *transport)
 {
+	printf("nvmf_rdma_destroy\n");
 	struct spdk_nvmf_rdma_transport	*rtransport;
 	struct spdk_nvmf_rdma_port	*port, *port_tmp;
 	struct spdk_nvmf_rdma_device	*device, *device_tmp;
@@ -2586,6 +2588,7 @@ static int
 nvmf_rdma_listen(struct spdk_nvmf_transport *transport,
 		 const struct spdk_nvme_transport_id *trid)
 {
+	printf("nvmf_rdma_listen\n");
 	struct spdk_nvmf_rdma_transport	*rtransport;
 	struct spdk_nvmf_rdma_device	*device;
 	struct spdk_nvmf_rdma_port	*port;
@@ -2699,6 +2702,7 @@ static void
 nvmf_rdma_stop_listen(struct spdk_nvmf_transport *transport,
 		      const struct spdk_nvme_transport_id *trid)
 {
+	printf("nvmf_rdma_stop_listen\n");
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_port *port, *tmp;
 
@@ -3218,6 +3222,7 @@ nvmf_process_ib_event(struct spdk_nvmf_rdma_device *device)
 static uint32_t
 nvmf_rdma_accept(struct spdk_nvmf_transport *transport)
 {
+	printf("nvmf_rdma_accept\n");
 	int	nfds, i = 0;
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_device *device, *tmp;
@@ -3257,6 +3262,7 @@ static void
 nvmf_rdma_cdata_init(struct spdk_nvmf_transport *transport, struct spdk_nvmf_subsystem *subsystem,
 		     struct spdk_nvmf_ctrlr_data *cdata)
 {
+	printf("nvmf_rdma_cdata_init\n");
 	cdata->nvmf_specific.msdbd = SPDK_NVMF_MAX_SGL_ENTRIES;
 
 	/* Disable in-capsule data transfer for RDMA controller when dif_insert_or_strip is enabled
@@ -3271,6 +3277,7 @@ nvmf_rdma_discover(struct spdk_nvmf_transport *transport,
 		   struct spdk_nvme_transport_id *trid,
 		   struct spdk_nvmf_discovery_log_page_entry *entry)
 {
+	printf("nvmf_rdma_discover\n");
 	entry->trtype = SPDK_NVMF_TRTYPE_RDMA;
 	entry->adrfam = trid->adrfam;
 	entry->treq.secure_channel = SPDK_NVMF_TREQ_SECURE_CHANNEL_NOT_REQUIRED;
@@ -3289,6 +3296,7 @@ nvmf_rdma_poll_group_destroy(struct spdk_nvmf_transport_poll_group *group);
 static struct spdk_nvmf_transport_poll_group *
 nvmf_rdma_poll_group_create(struct spdk_nvmf_transport *transport)
 {
+	printf("nvmf_rdma_poll_group_create\n");
 	struct spdk_nvmf_rdma_transport		*rtransport;
 	struct spdk_nvmf_rdma_poll_group	*rgroup;
 	struct spdk_nvmf_rdma_poller		*poller;
@@ -3391,6 +3399,7 @@ nvmf_rdma_poll_group_create(struct spdk_nvmf_transport *transport)
 static struct spdk_nvmf_transport_poll_group *
 nvmf_rdma_get_optimal_poll_group(struct spdk_nvmf_qpair *qpair)
 {
+	printf("nvmf_rdma_get_optimal_poll_group\n");
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_poll_group **pg;
 	struct spdk_nvmf_transport_poll_group *result;
@@ -3427,6 +3436,7 @@ nvmf_rdma_get_optimal_poll_group(struct spdk_nvmf_qpair *qpair)
 static void
 nvmf_rdma_poll_group_destroy(struct spdk_nvmf_transport_poll_group *group)
 {
+	printf("nvmf_rdma_poll_group_destroy\n");
 	struct spdk_nvmf_rdma_poll_group	*rgroup, *next_rgroup;
 	struct spdk_nvmf_rdma_poller		*poller, *tmp;
 	struct spdk_nvmf_rdma_qpair		*qpair, *tmp_qpair;
@@ -3506,6 +3516,7 @@ static int
 nvmf_rdma_poll_group_add(struct spdk_nvmf_transport_poll_group *group,
 			 struct spdk_nvmf_qpair *qpair)
 {
+	printf("nvmf_rdma_poll_group_add\n");
 	struct spdk_nvmf_rdma_poll_group	*rgroup;
 	struct spdk_nvmf_rdma_qpair		*rqpair;
 	struct spdk_nvmf_rdma_device		*device;
@@ -3554,6 +3565,7 @@ static int
 nvmf_rdma_poll_group_remove(struct spdk_nvmf_transport_poll_group *group,
 			    struct spdk_nvmf_qpair *qpair)
 {
+	printf("nvmf_rdma_poll_group_remove\n");
 	struct spdk_nvmf_rdma_qpair		*rqpair;
 
 	rqpair = SPDK_CONTAINEROF(qpair, struct spdk_nvmf_rdma_qpair, qpair);
@@ -3577,6 +3589,7 @@ nvmf_rdma_poll_group_remove(struct spdk_nvmf_transport_poll_group *group,
 static int
 nvmf_rdma_request_free(struct spdk_nvmf_request *req)
 {
+	printf("nvmf_rdma_request_free\n");
 	struct spdk_nvmf_rdma_request	*rdma_req = SPDK_CONTAINEROF(req, struct spdk_nvmf_rdma_request, req);
 	struct spdk_nvmf_rdma_transport	*rtransport = SPDK_CONTAINEROF(req->qpair->transport,
 			struct spdk_nvmf_rdma_transport, transport);
@@ -3605,6 +3618,7 @@ nvmf_rdma_request_free(struct spdk_nvmf_request *req)
 static int
 nvmf_rdma_request_complete(struct spdk_nvmf_request *req)
 {
+	printf("nvmf_rdma_request_complete\n");
 	struct spdk_nvmf_rdma_transport	*rtransport = SPDK_CONTAINEROF(req->qpair->transport,
 			struct spdk_nvmf_rdma_transport, transport);
 	struct spdk_nvmf_rdma_request	*rdma_req = SPDK_CONTAINEROF(req,
@@ -3644,6 +3658,7 @@ nvmf_rdma_destroy_defunct_qpair(void *ctx)
 static void
 nvmf_rdma_close_qpair(struct spdk_nvmf_qpair *qpair)
 {
+	printf("nvmf_rdma_close_qpair\n");
 	struct spdk_nvmf_rdma_qpair *rqpair = SPDK_CONTAINEROF(qpair, struct spdk_nvmf_rdma_qpair, qpair);
 
 	if (rqpair->disconnect_flags & RDMA_QP_DISCONNECTING) {
@@ -4002,6 +4017,7 @@ nvmf_rdma_poller_poll(struct spdk_nvmf_rdma_transport *rtransport,
 static int
 nvmf_rdma_poll_group_poll(struct spdk_nvmf_transport_poll_group *group)
 {
+	printf("nvmf_rdma_poll_group_poll\n");
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_poll_group *rgroup;
 	struct spdk_nvmf_rdma_poller	*rpoller;
@@ -4077,6 +4093,7 @@ static int
 nvmf_rdma_qpair_get_peer_trid(struct spdk_nvmf_qpair *qpair,
 			      struct spdk_nvme_transport_id *trid)
 {
+	printf("nvmf_rdma_qpair_get_peer_trid\n");
 	struct spdk_nvmf_rdma_qpair	*rqpair;
 
 	rqpair = SPDK_CONTAINEROF(qpair, struct spdk_nvmf_rdma_qpair, qpair);
@@ -4088,6 +4105,7 @@ static int
 nvmf_rdma_qpair_get_local_trid(struct spdk_nvmf_qpair *qpair,
 			       struct spdk_nvme_transport_id *trid)
 {
+	printf("nvmf_rdma_qpair_get_local_trid\n");
 	struct spdk_nvmf_rdma_qpair	*rqpair;
 
 	rqpair = SPDK_CONTAINEROF(qpair, struct spdk_nvmf_rdma_qpair, qpair);
@@ -4099,6 +4117,7 @@ static int
 nvmf_rdma_qpair_get_listen_trid(struct spdk_nvmf_qpair *qpair,
 				struct spdk_nvme_transport_id *trid)
 {
+	printf("nvmf_rdma_qpair_get_listen_trid\n");
 	struct spdk_nvmf_rdma_qpair	*rqpair;
 
 	rqpair = SPDK_CONTAINEROF(qpair, struct spdk_nvmf_rdma_qpair, qpair);
@@ -4184,6 +4203,7 @@ static void
 nvmf_rdma_qpair_abort_request(struct spdk_nvmf_qpair *qpair,
 			      struct spdk_nvmf_request *req)
 {
+	printf("nvmf_rdma_qpair_abort_request\n");
 	struct spdk_nvmf_rdma_qpair *rqpair;
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_transport *transport;
