@@ -688,6 +688,30 @@ nvmf_ucx_listen(struct spdk_nvmf_transport *transport,
 	}
 
 	pthread_mutex_lock(&ttransport->lock);
+	//add 创建ep
+	ucp_ep_params_t ep_params;
+    struct sockaddr_in connect_addr;
+    ucs_status_t status;
+
+    set_connect_addr(ip, &connect_addr);
+	ep_params.field_mask       = UCP_EP_PARAM_FIELD_FLAGS       |
+                                 UCP_EP_PARAM_FIELD_SOCK_ADDR   |
+                                 UCP_EP_PARAM_FIELD_ERR_HANDLER |
+                                 UCP_EP_PARAM_FIELD_ERR_HANDLING_MODE;
+    ep_params.err_mode         = UCP_ERR_HANDLING_MODE_PEER;
+    ep_params.err_handler.cb   = err_cb;
+    ep_params.err_handler.arg  = NULL;
+    ep_params.flags            = UCP_EP_PARAMS_FLAGS_CLIENT_SERVER;
+    ep_params.sockaddr.addr    = (struct sockaddr*)&connect_addr;
+    ep_params.sockaddr.addrlen = sizeof(connect_addr);
+
+    status = ucp_ep_create(ucp_worker, &ep_params, client_ep);
+    if (status != UCS_OK) {
+        fprintf(stderr, "failed to connect to %s (%s)\n", ip, ucs_status_string(status));
+    }
+
+    //return status;
+
 	port = calloc(1, sizeof(*port));
 	if (!port) {
 		SPDK_ERRLOG("Port allocation failed\n");

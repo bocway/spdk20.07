@@ -2575,14 +2575,14 @@ nvmf_rdma_trid_from_cm_id(struct rdma_cm_id *id,
 /**
  * Set an address for the server to listen on - INADDR_ANY on a well known port.
  */
-void set_listen_addr(const char *address_str, struct sockaddr_in *listen_addr)
-{
-    /* The server will listen on INADDR_ANY */
-    memset(listen_addr, 0, sizeof(struct sockaddr_in));
-    listen_addr->sin_family      = AF_INET;
-    listen_addr->sin_addr.s_addr = (address_str) ? inet_addr(address_str) : INADDR_ANY;
-    listen_addr->sin_port        = htons(server_port);
-}
+// void set_listen_addr(const char *address_str, struct sockaddr_in *listen_addr)
+// {
+//     /* The server will listen on INADDR_ANY */
+//     memset(listen_addr, 0, sizeof(struct sockaddr_in));
+//     listen_addr->sin_family      = AF_INET;
+//     listen_addr->sin_addr.s_addr = (address_str) ? inet_addr(address_str) : INADDR_ANY;
+//     listen_addr->sin_port        = htons(server_port);
+// }
 
 static int
 nvmf_rdma_listen(struct spdk_nvmf_transport *transport,
