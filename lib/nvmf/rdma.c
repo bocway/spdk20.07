@@ -1375,6 +1375,7 @@ nvmf_request_alloc_wrs(struct spdk_nvmf_rdma_transport *rtransport,
 		       struct spdk_nvmf_rdma_request *rdma_req,
 		       uint32_t num_sgl_descriptors)
 {
+	printf("nvmf_request_alloc_wrs\n");
 	struct spdk_nvmf_rdma_request_data	*work_requests[SPDK_NVMF_MAX_SGL_ENTRIES];
 	struct spdk_nvmf_rdma_request_data	*current_data_wr;
 	uint32_t				i;
