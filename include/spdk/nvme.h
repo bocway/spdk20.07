@@ -308,6 +308,7 @@ enum spdk_nvme_transport_type {
 	 */
 	SPDK_NVME_TRANSPORT_FC = SPDK_NVMF_TRTYPE_FC,
 
+	SPDK_NVME_TRANSPORT_ucx = SPDK_NVMF_TRTYPE_ucx,
 	/**
 	 * TCP Transport
 	 */

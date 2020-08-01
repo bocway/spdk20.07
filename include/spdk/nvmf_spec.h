@@ -125,11 +125,12 @@ enum spdk_nvmf_trtype {
 	SPDK_NVMF_TRTYPE_RDMA		= 0x1,
 
 	/** Fibre Channel */
-	SPDK_NVMF_TRTYPE_FC		= 0x2,
+	SPDK_NVMF_TRTYPE_FC			= 0x2,
 
 	/** TCP */
 	SPDK_NVMF_TRTYPE_TCP		= 0x3,
 
+	SPDK_NVMF_TRTYPE_ucx		= 0x4,
 	/** Intra-host transport (loopback) */
 	SPDK_NVMF_TRTYPE_INTRA_HOST	= 0xfe,
 };

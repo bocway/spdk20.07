@@ -187,6 +187,10 @@ struct spdk_nvmf_transport {
 	struct spdk_nvmf_tgt			*tgt;
 	const struct spdk_nvmf_transport_ops	*ops;
 	struct spdk_nvmf_transport_opts		opts;
+	
+	//ucp 
+	ucp_context_h ucp_context;
+    ucp_worker_h  ucp_worker;
 
 	/* A mempool for transport related data transfers */
 	struct spdk_mempool			*data_buf_pool;
