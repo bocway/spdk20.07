@@ -50,6 +50,7 @@ CFLAGS += -I$(SPDK_ROOT_DIR)/lib
 CFLAGS += -I$(SPDK_ROOT_DIR)/module
 CFLAGS += -I$(SPDK_ROOT_DIR)/test
 CFLAGS += -ffunction-sections
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 LDFLAGS += -Wl,--gc-sections
 
 SPDK_LIB_LIST += thread util log

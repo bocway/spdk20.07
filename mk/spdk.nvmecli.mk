@@ -70,6 +70,7 @@ endif
 endif
 
 override CFLAGS += -I$(SPDK_ROOT_DIR)/include
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 override LDFLAGS += \
 	-Wl,--whole-archive \
 	-L$(SPDK_LIB_DIR) $(NVMECLI_SPDK_LIBS) \
@@ -81,25 +82,30 @@ ifeq ($(CONFIG_ISAL), y)
 ISAL_DIR=$(SPDK_ROOT_DIR)/isa-l
 override LDFLAGS += -L$(ISAL_DIR)/.libs -lisal
 override CFLAGS += -I$(ISAL_DIR)/..
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 endif
 
 ifeq ($(CONFIG_ASAN),y)
-override CFLAGS += -fsanitize=address
+override CFLAGS += -fsanitize=address 
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 override LDFLAGS += -fsanitize=address
 endif
 
 ifeq ($(CONFIG_UBSAN),y)
-override CFLAGS += -fsanitize=undefined
+override CFLAGS += -fsanitize=undefined 
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 override LDFLAGS += -fsanitize=undefined
 endif
 
 ifeq ($(CONFIG_TSAN),y)
 override CFLAGS += -fsanitize=thread
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 override LDFLAGS += -fsanitize=thread
 endif
 
 ifeq ($(CONFIG_COVERAGE), y)
 override CFLAGS += -fprofile-arcs -ftest-coverage
+CFLAGS +=-I/global/home/users/rdmaworkshop05/ucx-1.8.1/src/
 override LDFLAGS += -fprofile-arcs -ftest-coverage
 endif
 
