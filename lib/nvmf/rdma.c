@@ -3223,7 +3223,7 @@ static uint32_t
 nvmf_rdma_accept(struct spdk_nvmf_transport *transport)
 {
 	//printf("nvmf_rdma_accept\n");
-	//accept news
+	//accept 
 	int	nfds, i = 0;
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_device *device, *tmp;
