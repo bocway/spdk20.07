@@ -44,18 +44,20 @@
 #include "spdk/nvmf_cmd.h"
 #include "spdk/nvmf_spec.h"
 #include "spdk/memory.h"
-#include "./../../../ucx-1.8.1/src/ucs/profile/profile_on.h"
-#include "./../../../ucx-1.8.1/src/ucs/memory/memory_type.h"
-#include "./../../../ucx-1.8.1/src/ucs/sys/sys.h"
-#include "./../../../ucx-1.8.1/src/ucs/arch/atomic.h"
-#include "./../../../ucx-1.8.1/src/ucs/type/status.h"
-#include "./../../../ucx-1.8.1/src/ucs/datastruct/queue.h"
-#include "./../../../ucx-1.8.1/src/uct/api/uct.h"
-#include "./../../../ucx-1.8.1/src/ucp/api/ucp.h"
-#include "./../../../ucx-1.8.1/src/ucp/wireup/address.h"
-#include "./../../../ucx-1.8.1/src/ucp/core/ucp_listener.h"
-#include "./../../../ucx-1.8.1/src/ucp/core/ucp_ep.inl"
-#include "./../../../ucx-1.8.1/srcucm/api/ucm.h"
+
+#include <ucs/profile/profile_on.h>
+#include <ucs/memory/memory_type.h>
+#include <ucs/sys/sys.h>
+#include <ucs/arch/atomic.h>
+#include <ucs/type/status.h>
+#include <ucs/datastruct/queue.h>
+#include <uct/api/uct.h>
+#include <ucp/api/ucp.h>
+#include <ucp/wireup/address.h>
+#include <ucp/core/ucp_listener.h>
+#include <ucp/core/ucp_ep.inl>
+#include <ucm/api/ucm.h>
+
 
 #define SPDK_NVMF_MAX_SGL_ENTRIES	16
 
