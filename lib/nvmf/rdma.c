@@ -3222,7 +3222,8 @@ nvmf_process_ib_event(struct spdk_nvmf_rdma_device *device)
 static uint32_t
 nvmf_rdma_accept(struct spdk_nvmf_transport *transport)
 {
-	printf("nvmf_rdma_accept\n");
+	//printf("nvmf_rdma_accept\n");
+	//accept news
 	int	nfds, i = 0;
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_device *device, *tmp;
@@ -3436,7 +3437,8 @@ nvmf_rdma_get_optimal_poll_group(struct spdk_nvmf_qpair *qpair)
 static void
 nvmf_rdma_poll_group_destroy(struct spdk_nvmf_transport_poll_group *group)
 {
-	printf("nvmf_rdma_poll_group_destroy\n");
+	//printf("nvmf_rdma_poll_group_destroy\n");
+	//4 thread use it?
 	struct spdk_nvmf_rdma_poll_group	*rgroup, *next_rgroup;
 	struct spdk_nvmf_rdma_poller		*poller, *tmp;
 	struct spdk_nvmf_rdma_qpair		*qpair, *tmp_qpair;
@@ -4017,7 +4019,8 @@ nvmf_rdma_poller_poll(struct spdk_nvmf_rdma_transport *rtransport,
 static int
 nvmf_rdma_poll_group_poll(struct spdk_nvmf_transport_poll_group *group)
 {
-	printf("nvmf_rdma_poll_group_poll\n");
+	//printf("nvmf_rdma_poll_group_poll\n");
+	//Multiple loop for news
 	struct spdk_nvmf_rdma_transport *rtransport;
 	struct spdk_nvmf_rdma_poll_group *rgroup;
 	struct spdk_nvmf_rdma_poller	*rpoller;
